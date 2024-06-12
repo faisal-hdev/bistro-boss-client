@@ -4,13 +4,17 @@ import "./Featured.css";
 
 const Featured = () => {
   return (
-    <div className="featured-item my-20 py-10 md:py-20">
-      <SectionTitle heading="Featured item" subHeading="Check it out" />
-      <div className="flex flex-col px-5 items-center md:flex-row gap-5 md:gap-10">
+    <div className="featured-item bg-fixed  pt-2 my-20">
+      <SectionTitle
+        className=""
+        heading="Featured item"
+        subHeading="Check it out"
+      />
+      <div className="bg-slate-500 opacity-70 flex flex-col px5 items-center md:flex-row gap-5 md:gap-10 pb-24">
         <div>
           <img src={featuredImg} alt="" />
         </div>
-        <div className="dark:text-white">
+        <div className="text-white">
           <p className="text-xl">March 20, 2023</p>
           <p className="text-xl">WHERE CAN I GET SOME?</p>
           <p className="font-thin">
