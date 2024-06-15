@@ -11,6 +11,7 @@ import slide3 from "../../../assets/home/slide3.jpg";
 import slide4 from "../../../assets/home/slide4.jpg";
 import slide5 from "../../../assets/home/slide5.jpg";
 import SectionTitle from "../../../components/SectionTitle";
+// import SectionTitle from "../../../components/SectionTitle";
 
 const FoodsCategories = () => {
   return (

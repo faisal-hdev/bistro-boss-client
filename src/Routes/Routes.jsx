@@ -1,7 +1,7 @@
-import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Menu from "../pages/Menu/Menu/Menu";
+import { createBrowserRouter } from "react-router-dom";
 import OrderFood from "../pages/OrderFood/OrderFood/OrderFood";
 
 export const router = createBrowserRouter([
@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "menu", element: <Menu /> },
-      { path: "orderFood", element: <OrderFood /> },
+      { path: "orderFood/:category", element: <OrderFood /> },
     ],
   },
 ]);

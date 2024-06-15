@@ -1,13 +1,13 @@
 import { Helmet } from "react-helmet";
+import useMenu from "../../../hooks/useMenu";
+import MenuCategory from "../MenuCategory/MenuCategory";
 import PageCover from "../../Shared/PageCover/PageCover";
+import SectionTitle from "../../../components/SectionTitle";
 import menuCoverImg from "../../../assets/menu/banner3.jpg";
-import sectionBannerImg1 from "../../../assets/menu/dessert-bg.jpeg";
+import sectionBannerImg4 from "../../../assets/menu/soup-bg.jpg";
 import sectionBannerImg2 from "../../../assets/menu/pizza-bg.jpg";
 import sectionBannerImg3 from "../../../assets/menu/salad-bg.jpg";
-import sectionBannerImg4 from "../../../assets/menu/soup-bg.jpg";
-import useMenu from "../../../hooks/useMenu";
-import SectionTitle from "../../../components/SectionTitle";
-import MenuCategory from "../MenuCategory/MenuCategory";
+import sectionBannerImg1 from "../../../assets/menu/dessert-bg.jpeg";
 
 const Menu = () => {
   const [menu] = useMenu();
