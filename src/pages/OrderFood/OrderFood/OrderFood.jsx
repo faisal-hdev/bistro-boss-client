@@ -24,7 +24,7 @@ const OrderFood = () => {
   const drinks = menu.filter((item) => item.category === "drinks");
 
   return (
-    <div>
+    <div className="max-w7xl mx-auto">
       <Helmet>
         <title>Bistro boss | Order Foods</title>
       </Helmet>
@@ -58,9 +58,6 @@ const OrderFood = () => {
             <OrderTab items={drinks} />
           </TabPanel>
         </Tabs>
-      </div>
-      <div>
-        <h3 className="text-5xl text-red-600">Hello world</h3>
       </div>
     </div>
   );

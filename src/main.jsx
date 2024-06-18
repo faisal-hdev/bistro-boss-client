@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <HelmetProvider>
       <AuthProvider>
-        <div className="max-w-screen-xl mx-auto">
+        <div className="max-w-screenxl mxauto">
           <RouterProvider router={router} />
         </div>
       </AuthProvider>

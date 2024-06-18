@@ -13,9 +13,11 @@ const Home = () => {
       </Helmet>
       <Banner />
       <FoodsCategories />
-      <PopularMenu />
-      <Featured />
-      <Testimonials />
+      <div className="max-w-7xl mx-auto">
+        <PopularMenu />
+        <Featured />
+        <Testimonials />
+      </div>
     </div>
   );
 };

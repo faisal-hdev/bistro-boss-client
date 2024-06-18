@@ -4,11 +4,11 @@ import PageCover from "../../Shared/PageCover/PageCover";
 
 const MenuCategory = ({ items, title, menuCoverImg, subMenu }) => {
   return (
-    <div>
+    <div className="">
       {title && (
         <PageCover img={menuCoverImg} coverTitle={title} subMenu={subMenu} />
       )}
-      <div className="grid md:grid-cols-2 gap-5 md:gap-10 my-14 md:my-20">
+      <div className="grid md:grid-cols-2 gap-5 md:gap-10 my-14 md:my-20 max-w-7xl mx-auto">
         {items.map((item) => (
           <MenuItem key={item._id} item={item} />
         ))}
