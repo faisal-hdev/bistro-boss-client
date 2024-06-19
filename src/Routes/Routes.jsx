@@ -5,6 +5,8 @@ import { createBrowserRouter } from "react-router-dom";
 import OrderFood from "../pages/OrderFood/OrderFood/OrderFood";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import PrivetRoutes from "./PrivetRoutes";
+import Secret from "../pages/Shared/Secret/Secret";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ export const router = createBrowserRouter([
       { path: "orderFood/:category", element: <OrderFood /> },
       { path: "login", element: <Login /> },
       { path: "signUp", element: <SignUp /> },
+      {
+        path: "secret",
+        element: (
+          <PrivetRoutes>
+            <Secret />
+          </PrivetRoutes>
+        ),
+      },
     ],
   },
 ]);
