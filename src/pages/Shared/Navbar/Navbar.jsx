@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { HiShoppingCart } from "react-icons/hi";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut()
@@ -25,6 +28,14 @@ const Navbar = () => {
       <li>
         <Link to="/secret">Secret</Link>
       </li>
+      <li>
+        <Link to="/secret">
+          <button className="btn">
+            <HiShoppingCart className="mr-2 w-5 h-5" />
+            <div className="badge badge-secondary">+{cart.length}</div>
+          </button>
+        </Link>
+      </li>
       {user ? (
         <>
           <li>
@@ -44,7 +55,7 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar bg-black text-white max-w-screenxl md:px-[100px] fixed z-20 bg-opacity-30">
+      <div className="navbar bg-black text-white  md:px-[100px] fixed z-20 bg-opacity-30">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -77,11 +88,11 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <img
-            className="w-10 h-10 rounded-full mr-4 border-blue-400 border-2"
+            className="w-10 h-10 rounded-full mr-4 border-blue-400 border-3"
             src={user?.photoURL}
             alt=""
           />
-          <a className=" ">{user?.displayName}</a>
+          <p className="font-semibold">{user?.displayName}</p>
         </div>
       </div>
     </>

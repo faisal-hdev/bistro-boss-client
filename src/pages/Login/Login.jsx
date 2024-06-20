@@ -1,24 +1,23 @@
 // import React from 'react';
-import { useContext, useEffect, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+import "sweetalert2/src/sweetalert2.scss";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import Swal from "sweetalert2";
-// import Swal from "sweetalert2/dist/sweetalert2.js";
-import "sweetalert2/src/sweetalert2.scss";
 
 const Login = () => {
-  // const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+  console.log("state in the location login page", location.state);
 
   const { signIn } = useContext(AuthContext);
 
@@ -100,11 +99,6 @@ const Login = () => {
                   className="input input-bordered"
                   required
                 />
-                {/* <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label> */}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -112,21 +106,17 @@ const Login = () => {
                 </label>
                 <input
                   onBlur={HandleValidateCaptcha}
-                  // onClick={HandleValidateCaptcha()}
-                  // ref={captchaRef}
                   name="captcha"
                   type="text"
                   placeholder="Type the Captcha above"
                   className="input input-bordered"
                   required
                 />
-                {/* <button className="btn btn-outline btn-sm mt-2">
-                  Validate
-                </button> */}
               </div>
               <div className="form-control mt-6">
                 <input
                   disabled={disabled}
+                  // disabled={false}
                   type="submit"
                   className="btn btn-primary"
                   value="Login"
