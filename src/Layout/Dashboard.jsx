@@ -1,8 +1,8 @@
 // import React from "react";
-
 import {
   FaAddressCard,
   FaCalendar,
+  FaEnvelope,
   FaHome,
   FaList,
   FaShoppingCart,
@@ -14,6 +14,10 @@ import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
   const [cart] = useCart();
+
+  // TODO : get isAdmin value form the database
+  const isAdmin = true;
+
   return (
     <div className="flex">
       {/* Dashboard side bar */}
@@ -49,6 +53,7 @@ const Dashboard = () => {
               My Bookings
             </NavLink>
           </li>
+          {/* shared nav links */}
           <div className="divider">OR</div>
           <li className="p-2">
             <NavLink to="/">
@@ -66,6 +71,12 @@ const Dashboard = () => {
             <NavLink to="/menu">
               <FaShop className="font-bold text-lg" />
               Menu
+            </NavLink>
+          </li>
+          <li className="p-2">
+            <NavLink to="/orderFood/contact">
+              <FaEnvelope className="font-bold text-lg" />
+              Contact
             </NavLink>
           </li>
         </ul>

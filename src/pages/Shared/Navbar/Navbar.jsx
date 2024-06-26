@@ -84,11 +84,13 @@ const Navbar = () => {
           <a className="btn btn-ghost text-xl">Bistro Boos</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+          <ul className="menu menu-horizontal px-1  justifycenter items-center ">
+            {navOptions}
+          </ul>
         </div>
         <div className="navbar-end">
           <img
-            className="w-10 h-10 rounded-full mr-4 border-blue-400 border-3"
+            className="w-10 h-10 rounded-full mr-4 border-blue-400 border-3 object-cover border-2"
             src={user?.photoURL}
             alt=""
           />

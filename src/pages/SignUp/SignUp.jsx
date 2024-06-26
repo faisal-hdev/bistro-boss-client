@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import useAxiosOpen from "./../../hooks/useAxiosOpen";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -19,22 +21,34 @@ const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
 
   const onSubmit = (data) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const axiosPublic = useAxiosOpen();
     console.log(data);
+
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
       updateUserProfile(data.name, data.photo)
         .then(() => {
-          console.log("User profile info updated");
-          reset();
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Sign up successful",
-            showConfirmButton: false,
-            timer: 1500,
+          // create user entry in the database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added to the database");
+              reset();
+              Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Sign up successful",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch(
           // (error) => console.error(error)
@@ -173,6 +187,7 @@ const SignUp = () => {
                 </small>
               </p>
             </form>
+            <SocialLogin />
           </div>
         </div>
       </div>

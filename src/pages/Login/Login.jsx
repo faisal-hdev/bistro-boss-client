@@ -10,6 +10,7 @@ import "sweetalert2/src/sweetalert2.scss";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -122,13 +123,19 @@ const Login = () => {
                   value="Login"
                 />
               </div>
+            </form>
+            <div className="p-4 pt-0">
               <p className="text-center font-medium">
                 New here?
                 <small className="ml-1.5">
                   <Link to="/signUp">Create a New Account</Link>
                 </small>
               </p>
-            </form>
+              <div className="divider">OR</div>
+              <div className="flex justify-center space-x-3">
+                <SocialLogin />
+              </div>
+            </div>
           </div>
         </div>
       </div>
