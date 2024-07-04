@@ -1,6 +1,6 @@
 // import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -16,7 +16,23 @@ const AllUsers = () => {
   });
   console.log(users);
 
-  const handleMakeAdmin = () => {};
+  const handleMakeAdmin = (user) => {
+    console.log(user._id);
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        // refetch();
+        refetch();
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `${user.name} is an Admin Now`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+    });
+  };
 
   const handleDeleteUser = (user) => {
     Swal.fire({
@@ -72,12 +88,16 @@ const AllUsers = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button
-                    onClick={() => handleMakeAdmin(user)}
-                    className="p-3 rounded bg-[#D1A054] text-white"
-                  >
-                    <FaUsers className="w-4 h-4" />
-                  </button>
+                  {user.role === "admin" ? (
+                    "Admin"
+                  ) : (
+                    <button
+                      onClick={() => handleMakeAdmin(user)}
+                      className="p-3 rounded bg-[#D1A054] text-white"
+                    >
+                      <FaUsers className="w-4 h-4" />
+                    </button>
+                  )}
                 </td>
                 <td>
                   <button
