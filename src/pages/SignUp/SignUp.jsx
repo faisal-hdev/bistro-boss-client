@@ -24,7 +24,6 @@ const SignUp = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const axiosPublic = useAxiosOpen();
     console.log(data);
-
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
