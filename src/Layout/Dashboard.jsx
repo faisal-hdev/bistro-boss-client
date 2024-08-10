@@ -12,12 +12,13 @@ import { FaBookAtlas, FaPeopleGroup, FaShop } from "react-icons/fa6";
 import { MdRestaurantMenu } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import UseAdmin from "../hooks/UseAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
 
   // TODO : get isAdmin value form the database
-  const isAdmin = true;
+  const [isAdmin] = UseAdmin();
 
   return (
     <div className="flex">
