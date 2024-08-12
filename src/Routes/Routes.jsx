@@ -10,6 +10,8 @@ import Secret from "../pages/Shared/Secret/Secret";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
 import AllUsers from "../pages/Dashboard/Cart/AllUsers/AllUsers";
+import AddItems from "../pages/Dashboard/AddItems/AddItems";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -39,9 +41,25 @@ export const router = createBrowserRouter([
       </PrivetRoutes>
     ),
     children: [
+      // Normal user routes
       { path: "cart", element: <Cart /> },
-      // admin routes
-      { path: "allUsers", element: <AllUsers /> },
+      // Admin only routes
+      {
+        path: "addItems",
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "allUsers",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);

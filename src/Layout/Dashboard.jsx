@@ -121,7 +121,7 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* Dashboard content */}
-      <div className="flex p-8">
+      <div className="flex p-8 w-full">
         <Outlet></Outlet>
       </div>
     </div>
