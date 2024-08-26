@@ -30,7 +30,7 @@ const AddItems = () => {
         recipe: data.recipe,
         image: res.data.data.display_url,
       };
-      // menu respo
+      // menu response
       const menuRes = await axiosSecure.post("/menu", menuItem);
       console.log(menuRes.data);
       if (menuRes.data.insertedId) {
