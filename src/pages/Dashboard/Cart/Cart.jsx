@@ -9,7 +9,6 @@ const Cart = () => {
   const [cart, refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
   // console.log(cart);
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -35,6 +34,7 @@ const Cart = () => {
       }
     });
   };
+
   return (
     <div className="bg-gray-50 p-4 md:p-6">
       <div className="flex justify-evenly gap-9 items-center">
