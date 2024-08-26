@@ -2,11 +2,40 @@ import { MdDeleteForever } from "react-icons/md";
 import SectionTitle from "../../../components/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import { FaEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageItems = () => {
-  const [menu] = useMenu();
+  const [menu, , refetch] = useMenu();
+  const axiosSecure = useAxiosSecure();
 
-  const handleDeleteItem = (item) => {};
+  const handleDeleteItem = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosSecure.delete(`/menu/${item._id}`);
+        console.log(res.data);
+        if (res.data.deletedCount > 0) {
+          // to updated the ui
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${item.name} has been deleted`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      }
+    });
+  };
 
   return (
     <div className="w-full">
