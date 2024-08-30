@@ -51,7 +51,7 @@ const UpdateItem = () => {
         });
       }
     }
-    console.log("With image url", res.data);
+    // console.log("With image url", res.data);
   };
 
   return (
