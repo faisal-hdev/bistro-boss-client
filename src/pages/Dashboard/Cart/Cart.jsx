@@ -38,7 +38,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="bg-gray-50 p-4 md:p-6">
+    <div className="bg-gray-50 p-4 md:p-6 w-full">
       <div className="flex justify-evenly gap-9 items-center">
         <h2 className="text-4xl">Total orders: {cart.length}</h2>
         <h2 className="text-4xl">Total orders: {totalPrice}</h2>
