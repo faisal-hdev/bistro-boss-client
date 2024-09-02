@@ -9,10 +9,11 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { FaBookAtlas, FaPeopleGroup, FaShop } from "react-icons/fa6";
-import { MdRestaurantMenu } from "react-icons/md";
+import { MdOutlinePayments, MdRestaurantMenu } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import UseAdmin from "../hooks/UseAdmin";
+// import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 
 const Dashboard = () => {
   const [cart] = useCart();
@@ -76,6 +77,12 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/cart">
                   <FaShoppingCart className="font-bold text-lg" />
                   My Cart ({cart.length})
+                </NavLink>
+              </li>
+              <li className="p-2">
+                <NavLink to="/dashboard/paymentHistory">
+                  <MdOutlinePayments className="font-bold text-lg" />
+                  Payment History
                 </NavLink>
               </li>
               <li className="p-2">
