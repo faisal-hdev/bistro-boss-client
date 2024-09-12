@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { HiShoppingCart } from "react-icons/hi";
 import useCart from "../../../hooks/useCart";
 import UseAdmin from "../../../hooks/UseAdmin";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -25,37 +25,36 @@ const Navbar = () => {
         <Link to="/menu">Our Menu</Link>
       </li>
       <li>
-        <Link to="/orderFood/salad">Order Foods</Link>
+        <Link to="/order/salad">Order Food</Link>
       </li>
       {
-        // user? 'true':'false'
+        // user ? 'true': 'false'
         // user ? condition ? 'double true' : 'one true' : 'false'
       }
       {user && isAdmin && (
         <li>
-          <Link to="/dashboard/adminHome">Order Foods</Link>
+          <Link to="/dashboard/adminHome">Dashboard</Link>
         </li>
       )}
       {user && !isAdmin && (
         <li>
-          <Link to="/dashboard/userHome">Order Foods</Link>
+          <Link to="/dashboard/userHome">Dashboard</Link>
         </li>
       )}
       <li>
         <Link to="/dashboard/cart">
           <button className="btn">
-            <HiShoppingCart className="mr-2 w-5 h-5" />
+            <FaShoppingCart className="mr-2"></FaShoppingCart>
             <div className="badge badge-secondary">+{cart.length}</div>
           </button>
         </Link>
       </li>
       {user ? (
         <>
-          <li>
-            <Link onClick={handleLogOut} to="/login">
-              Log out
-            </Link>
-          </li>
+          {/* <span>{user?.displayName}</span> */}
+          <button onClick={handleLogOut} className="btn btn-ghost">
+            LogOut
+          </button>
         </>
       ) : (
         <>
@@ -71,7 +70,7 @@ const Navbar = () => {
       <div className="navbar bg-black text-white mx-auto  md:px-[100px] fixed z-20 bg-opacity-30">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -86,28 +85,23 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </div>
+            </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Bistro Boos</a>
+          <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1  justifycenter items-center ">
+          <ul className="menu menu-horizontal items-center px-1">
             {navOptions}
           </ul>
         </div>
         <div className="navbar-end">
-          <img
-            className="w-10 h-10 rounded-full mr-4 border-blue-400 border-3 object-cover border-2"
-            src={user?.photoURL}
-            alt=""
-          />
-          <p className="font-semibold">{user?.displayName}</p>
+          <a className="btn">Get started</a>
         </div>
       </div>
     </>
